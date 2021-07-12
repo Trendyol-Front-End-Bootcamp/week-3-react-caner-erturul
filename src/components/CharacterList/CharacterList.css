@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 4.5rem 0px;
+  background: rgb(118, 123, 133);
+  min-height: calc(50vh - 60px);
+  flex-direction: column;
+}
+
+.character-list {
+  display: grid;
+  grid-template-columns: repeat(2, 700px);
+  gap: 20px;
+}
+
+.load-more {
+  background-color: rgb(60, 62, 68);
+  color: white;
+  padding: 12px;
+  width: 250px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  outline: none;
+  cursor: pointer;
+}
+.load-more:hover {
+  box-shadow: 0 8px 8px 0 var(--hover-color);
+  color: var(--hover-color);
+}
