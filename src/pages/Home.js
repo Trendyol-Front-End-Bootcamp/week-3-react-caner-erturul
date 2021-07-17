@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header/Header";
 import SearchBar from "../components/SearchBar/SearchBar";
 import CharacterList from "../components/CharacterList/CharacterList";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
+import axios from "axios";
 
 export default function Home() {
   const [searchBy, setSearchBy] = useState({ gender: "", status: "" });
@@ -12,6 +12,7 @@ export default function Home() {
   const [page, setPage] = useState(1);
   const [info, setInfo] = useState([]);
 
+  //Search Parameter Set Function
   const handleChange = (event) => {
     setSearchBy({ ...searchBy, [event.target.name]: event.target.value });
     setPage(1);
@@ -21,32 +22,32 @@ export default function Home() {
     if (info.next) setPage(page + 1);
   };
 
-  //fetchData
+  //getData
   useEffect(() => {
-    const queryString = `?page=${page}${
-      searchBy.status ? "&status=" + searchBy.status : ""
-    }${searchBy.gender ? "&gender=" + searchBy.gender : ""}`;
-    fetch(`https://rickandmortyapi.com/api/character${queryString}`)
-      .then((res) => res.json())
-      .then(
-        (data) => {
-          setIsLoaded(true);
-          setCharacterList([...characterList, ...data.results]);
-          setInfo(data.info);
-        },
-        (error) => {
-          setIsLoaded(true);
+    const getCharacter = async () => {
+      const response = await axios
+        .get(`https://rickandmortyapi.com/api/character`, {
+          params: {
+            page: page,
+            status: searchBy.status,
+            gender: searchBy.gender,
+          },
+        })
+        .catch((error) => {
           setError(error);
-        }
-      );
-  }, [searchBy, page]);
+        });
+      setIsLoaded(true);
+      setCharacterList([...characterList, ...response.data.results]);
+      setInfo(response.data.info);
+    };
+    getCharacter();
+  }, [page, searchBy]);
 
   if (error) {
     return <div>Error: {error.message}</div>;
   } else {
     return (
       <div>
-        <Header />
         <SearchBar onChange={handleChange} />
         {!isLoaded ? (
           <LoadingSpinner />
