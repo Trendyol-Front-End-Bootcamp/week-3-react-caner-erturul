@@ -1,5 +1,7 @@
 import "./CharacterList.css";
 import Character from "../Character/Character";
+import { Link } from "react-router-dom";
+
 
 export default function CharacterList({ characterList, onClick }) {
   let page = <p> No Result Found! </p>;
@@ -8,7 +10,9 @@ export default function CharacterList({ characterList, onClick }) {
       <ul className="character-list">
         {characterList.map((character) => (
           <li key={character.id}>
-            <Character item={character} />
+            <Link to={`/character/${character.id}`}>
+              <Character item={character} />
+            </Link>
           </li>
         ))}
       </ul>

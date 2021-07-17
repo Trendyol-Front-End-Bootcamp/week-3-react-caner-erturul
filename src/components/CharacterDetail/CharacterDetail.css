@@ -1,0 +1,115 @@
+.container {
+  display: flex;
+  padding: 4.5rem 0px;
+  background-color: rgb(118, 123, 133);
+  height: 700px;
+  justify-content: center;
+  align-items: center;
+}
+
+.character-detail {
+  border: 1px solid rgb(51, 52, 56);
+  display: flex;
+  background-color: rgb(51, 52, 56);
+  border-radius: 7px 7px 7px 7px;
+  width: 800px;
+}
+.character-detail img {
+  border-radius: 7px 0 0 7px;
+}
+.episode-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.character-detail:hover {
+  box-shadow: 0 8px 8px 0 rgb(51, 52, 56);
+  color: var(--hover-color);
+}
+
+.episode-info {
+  display: flex;
+}
+
+.back-button {
+  position: absolute;
+  top: 26%;
+  left: 2%;
+  padding: 10px 50px;
+  color: #ffffff;
+  background-color: rgb(51, 52, 56);
+  border-radius: 7px 7px 7px 7px;
+}
+
+.back-button:hover {
+  box-shadow: 0 3px 8px 0 var(--hover-color);
+}
+
+:root {
+  --hover-color: rgb(37 34 34);
+  --alive-color: rgb(85, 204, 68);
+  --dead-color: rgb(214, 61, 46);
+}
+
+.character-info {
+  flex: 3 1 0%;
+  position: relative;
+  padding: 0.75rem;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.section {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.section h2 {
+  margin: 0;
+}
+
+.status {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.status span {
+  font-weight: 500;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 27px;
+  margin: 0;
+  padding: 0;
+}
+
+.status .status-icon {
+  height: 0.5rem;
+  width: 0.5rem;
+  margin-right: 0.375rem;
+  border-radius: 50%;
+}
+
+.Alive-background {
+  background: var(--alive-color);
+}
+
+.Dead-background {
+  background: var(--dead-color);
+}
+
+.unknown-background {
+  background: rgb(245, 245, 245);
+}
+
+.text-gray {
+  color: rgb(158, 158, 158);
+}
